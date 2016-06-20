@@ -23,7 +23,7 @@ import com.grumpy.tot_durch_snusnu.v_01.util.Direction;
 import com.grumpy.tot_durch_snusnu.v_01.util.LevelHelper;
 
 
-/**
+/** Hallo Wie geht es dir!
  * {@link SurfaceView} welches sich um die Darstellung des Spiels und Interaktion mit diesem kümmert.
  * Erzeugt eine Gameloop ({@link GameView#gameThread}), welcher die Aktualisierung von Spielzustand
  * und -darstellung regelt.
