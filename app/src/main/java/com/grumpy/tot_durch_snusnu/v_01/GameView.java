@@ -17,10 +17,13 @@ import com.grumpy.tot_durch_snusnu.v_01.drawable.TileGraphics;
 import com.grumpy.tot_durch_snusnu.v_01.util.Direction;
 import com.grumpy.tot_durch_snusnu.v_01.util.LevelHelper;
 
+import com.grumpy.tot_durch_snusnu.v_01.drawable.GameContent;
+import com.grumpy.tot_durch_snusnu.v_01.drawable.TileGraphics;
+import com.grumpy.tot_durch_snusnu.v_01.util.Direction;
+import com.grumpy.tot_durch_snusnu.v_01.util.LevelHelper;
 
 
-
-/**
+/** Hallo Wie geht es dir!
  * {@link SurfaceView} welches sich um die Darstellung des Spiels und Interaktion mit diesem kümmert.
  * Erzeugt eine Gameloop ({@link GameView#gameThread}), welcher die Aktualisierung von Spielzustand
  * und -darstellung regelt.
@@ -42,7 +45,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
     synchronized private double getElapsedTime() { return elapsedTime; }
     synchronized private void increaseElapsedTime(double increment) { elapsedTime += increment; }
 
-    private double maxCollectedTargets = 999;
+    private double maxCollectedTargets = 30;
 
     private int gameMode=0; // 0 game not startet, 1 game started by first fling gesture, 2 game over
 
@@ -91,8 +94,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
         canvas.restore();
 
         // Layer 2 (Collected Targets, Score and Elapsed Time)
-        //TODO text für lebensanzeige
-        String collectedText = String.format("%d Viagra genommen", gameContent.getCollectedTargets());
+        String collectedText = String.format("%d gesammelt", gameContent.getCollectedTargets());
         String scoreText = String.format("Punkte: %d", gameContent.getCollectedScore());
         String timeText = "Zeit: " + String.format("%.2f", getElapsedTime()) + " Sekunden";
         String timeTextFake = "Zeit: " + String.format("%.2f", 200.0) + " Sekunden";
@@ -114,14 +116,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
             canvas.translate(0, (int)(timeTextBounds.height()*1.5));
             canvas.drawText(timeText, 0, 0, scoreAndTimePaint);
         }
-        if(gameMode==2) {
-            canvas.translate(0, (int)(timeTextBounds.height()*1.5));
-            canvas.drawText("TOD DURCH SNU SNU!", 0, 0, scoreAndTimePaint);
-        }
+        // TODO
         canvas.restore();
-
-
-
     }
 
     /**
