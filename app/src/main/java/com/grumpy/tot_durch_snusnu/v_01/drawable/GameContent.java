@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-import com.grumpy.tot_durch_snusnu.v_01.util.Direction;
-
 public class GameContent implements Drawable {
     /**
      * Breite und Höhe des Spielfeldes in Pixel
@@ -110,7 +108,7 @@ public class GameContent implements Drawable {
 
 
     /**
-     * @param context TODO <insert wise words here :-)/>
+     * @param context
      * @param levelName Name des zu ladenden Levels
      */
     public GameContent(Context context, String levelName) {
@@ -166,8 +164,7 @@ public class GameContent implements Drawable {
         // Vierter Schritt: Prüfen ob auf der Zielkachel ein Target existiert
         if(targetTiles[newY][newX] != null && targetTiles[newY][newX] instanceof Target) {
             collectedTargets++;
-            collectedScore += ((Target)targetTiles[newX][newY]).getScore();
-            // TODO
+            collectedScore += ((Target)targetTiles[newY][newX]).getScore();
             // Altes Ziel entfernen
             targets.remove(targetTiles[newY][newX]);
             targetTiles[newY][newX] = null;
@@ -179,7 +176,7 @@ public class GameContent implements Drawable {
             if(samePosition(player, dynTarget)) {
                 collectedScore += dynTarget.getScore();
                 dynamicTiles.remove(dynTarget);
-                // TODO
+                dynTarget= null;
             }
         }
 
@@ -300,7 +297,7 @@ public class GameContent implements Drawable {
 
 
     /**
-     * Erzeugt ein dynamisches Ziel TODO
+     * Erzeugt ein dynamisches Ziel
      *
      *
      * Ansonsten befindet sich das dynamische Ziel logisch "über" der Ebene der anderen Ziele.
@@ -351,9 +348,9 @@ public class GameContent implements Drawable {
             return;
 
         // Dynamischen Ziel erzeugen und Move einstellen
-        dynTarget = new DynamicTarget(sourceTile.getX(), sourceTile.getY(), getGraphicsStream(levelName, "sse1"));  // TODO
+        dynTarget = new DynamicTarget(sourceTile.getX(), sourceTile.getY(), getGraphicsStream(levelName, "amazone"));
         dynTarget.move(newX, newY);
-        dynTarget.setSpeed(0.1f);   // TODO
+        dynTarget.setSpeed(0.4f);
         dynamicTiles.add(dynTarget);
     }
 
@@ -386,8 +383,8 @@ public class GameContent implements Drawable {
      * @return Das Ziel
      */
     private Target chooseTarget(int x, int y, int targetNumber) {
-        int targetScores [] = {1, 2, 4};    // TODO
-        double targetProps [] = {0.6, 0.8}; // TODO
+        int targetScores [] = {1, 2, 4, 8};
+        double targetProps [] = {0.6, 0.8, 0.95};
         int targetIndex;
 
         // zufällige Auswahl des Targets nach Wahrscheinlichkeiten in targetProps
@@ -404,7 +401,7 @@ public class GameContent implements Drawable {
             targetIndex=targetNumber-1;
         }
 
-        return new Target(x, y, getGraphicsStream(levelName, "can"+targetNumber), targetScores[targetIndex]);   // TODO
+        return new Target(x, y, getGraphicsStream(levelName, "viagra"), targetScores[targetIndex]);
     }
 
 
@@ -443,11 +440,11 @@ public class GameContent implements Drawable {
     private TileGraphics getTileByCharacter(char c, int xIndex, int yIndex) {
         switch(c) {
             case 'w':
-            case 'W': return new Wall(xIndex, yIndex, getGraphicsStream(levelName, "wall"));    // TODO
+            case 'W': return new Wall(xIndex, yIndex, getGraphicsStream(levelName, "wall"));
             case 'f':
             case 'F': return new Floor(xIndex, yIndex, null);
             case 'p':
-            case 'P': return new Player(xIndex, yIndex, getGraphicsStream(levelName, "bender"));
+            case 'P': return new Player(xIndex, yIndex, getGraphicsStream(levelName, "fry"));
         }
         return null;
     }
