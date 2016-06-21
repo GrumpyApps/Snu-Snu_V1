@@ -129,7 +129,7 @@ public class GameContent implements Drawable {
     }
 
 
-    /** kurze aenderung damit ich es pushen kann
+    /** kurze aenderung damit ich es pushen kann2
      * Überprüfung der Möglichkeit einer Verschiebung des Players in eine vorgegebene Richtung
      * Geprüft wird auf Spielfeldrand und Hindernisse.
      * Falls das zulässige Zielfeld ein Target ist, wird dieses konsumiert und ein neues Target gesetzt.
